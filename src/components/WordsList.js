@@ -13,7 +13,7 @@ export default function WordsList() {
     <>
       <h1>Custom Words List</h1>
       <div className="section">
-        <input value={word} onChange={(event)=> setWord(event.target.value)} className="word-input" type="text" placeholder="Enter a word" />
+        <input value={word} onChange={(event) => setWord(event.target.value)} className="word-input" type="text" placeholder="Enter a word" />
         <button onClick={() => { dispatch(addWord(word)); }}>
           Add
         </button>
