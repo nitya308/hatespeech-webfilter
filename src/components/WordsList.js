@@ -15,7 +15,7 @@ export default function WordsList() {
       <div className="section">
         <input value={word} onChange={(event) => setWord(event.target.value)} className="word-input" type="text" placeholder="Enter a word" />
         <button onClick={() => { dispatch(addWord(word)); }}>
-          Add
+          Add Word to List
         </button>
       </div>
       <div className="section">

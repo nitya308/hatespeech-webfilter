@@ -39,3 +39,12 @@ button {
 .word-input{
   margin-right: 10px;
 }
+
+.words-list{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.word{
+  padding: 5px;
+}
