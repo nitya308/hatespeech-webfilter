@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore"
 import { getAuth } from "firebase/auth";
-import { doc, updateDoc, arrayUnion } from "firebase/firestore";
+import { doc, updateDoc, arrayUnion, setDoc } from "firebase/firestore";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 //require environment variables
@@ -49,13 +49,24 @@ export async function signInUser() {
       // const token = credential.accessToken;
       const user = result.user;
       console.log("user signed in is:", user);
-      return user;
-    }).catch((error) => {
+      createUserDoc(user.uid, user.displayName)
+        .then(() => {
+          return user;
+        })
+        .catch((error) => { console.log("error creating user doc:", error) })
+    })
+    .catch((error) => {
       const errorMessage = error.message;
       console.log("error message is:", errorMessage);
       return null;
     });
 };
 
-
+// Create user doc
+export async function createUserDoc(userID, userName) {
+  await setDoc(doc(db, "users", userID), {
+    userName,
+    words: []
+  });
+};
 
