@@ -5,12 +5,12 @@ import { getAuth } from "firebase/auth";
 import { doc, updateDoc, arrayUnion, setDoc } from "firebase/firestore";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
-//require environment variables
-require('dotenv').config();
+// require environment variables
+// require('dotenv').config();
 
 // Initialize Firebase
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  apiKey: "AIzaSyDTDFvA-L6p7-_ADoWhwGTK-JVxW54eki4",
   authDomain: "web-safe-d7c7a.firebaseapp.com",
   projectId: "web-safe-d7c7a",
   storageBucket: "web-safe-d7c7a.appspot.com",
@@ -28,7 +28,7 @@ export const auth = getAuth(app);
 export { signInWithPopup, GoogleAuthProvider }
 
 // Add a word
-export async function addWord(userID, word) {
+export async function addWordToUser(userID, word) {
   const userDoc = doc(db, "users", userID);
   try {
     await updateDoc(userDoc, {
@@ -41,7 +41,7 @@ export async function addWord(userID, word) {
   }
 };
 
-// sign in a user
+// Sign in a user
 export async function signInUser() {
   signInWithPopup(auth, provider)
     .then((result) => {
@@ -62,7 +62,7 @@ export async function signInUser() {
     });
 };
 
-// Create user doc
+// Create a user doc
 export async function createUserDoc(userID, userName) {
   await setDoc(doc(db, "users", userID), {
     userName,
