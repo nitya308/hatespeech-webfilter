@@ -43,23 +43,23 @@ export async function addWordToUser(userID, word) {
 
 // Sign in a user
 export async function signInUser() {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      // const credential = GoogleAuthProvider.credentialFromResult(result);
-      // const token = credential.accessToken;
-      const user = result.user;
-      console.log("user signed in is:", user);
-      createUserDoc(user.uid, user.displayName)
-        .then(() => {
-          return user;
-        })
-        .catch((error) => { console.log("error creating user doc:", error) })
-    })
-    .catch((error) => {
-      const errorMessage = error.message;
-      console.log("error message is:", errorMessage);
+  try {
+    const res = await signInWithPopup(auth, provider)
+    const user = res.user;
+    console.log("user signed in is:", user);
+    try {
+      await createUserDoc(user.uid, user.displayName);
+      return user;
+    }
+    catch {
+      console.log("error creating user doc");
       return null;
-    });
+    }
+  }
+  catch {
+    console.log("error signing in user");
+    return null;
+  }
 };
 
 // Create a user doc

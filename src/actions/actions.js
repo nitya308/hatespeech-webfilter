@@ -1,7 +1,7 @@
 import { LOGIN_USER, ADD_WORD } from "../actionTypes/actionTypes";
 import { signInUser, addWordToUser } from "../firebase";
 
-export function loginUser(user) {
+export function loginUser() {
   return (dispatch) => {
     signInUser().then((user) => {
       dispatch({
@@ -16,9 +16,9 @@ export function loginUser(user) {
 };
 
 
-export function addWord(word) {
+export function addWord(userID, word) {
   return (dispatch) => {
-    addWordToUser(word).then(() => {
+    addWordToUser(userID, word).then(() => {
       dispatch({
         type: ADD_WORD,
         payload: word,

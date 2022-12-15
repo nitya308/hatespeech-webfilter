@@ -5,8 +5,8 @@ export default function HiddenWords() {
   const state = useSelector((state) => state);
   return (
     <div className='words-list'>
-      {state.words.map((word) => (
-        <div className='word'>
+      {state.words.map((word, idx) => (
+        <div className='word' key={idx}>
           {word}
         </div>
       ))}
