@@ -18,7 +18,7 @@ app.use(express.json());
 
 // add route to get the words that need to be replaced for particular user
 app.get("/api/words", (req, res) => {
-  const userID = req.body.userID;
+  const userID = req.query.userID;
   (async () => {
     try {
       const document = db.collection('users').doc(userID);
