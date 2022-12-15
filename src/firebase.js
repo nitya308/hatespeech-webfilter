@@ -48,7 +48,7 @@ export async function signInUser() {
     const user = res.user;
     console.log("user signed in is:", user);
     try {
-      await createUserDoc(user.uid, user.displayName);
+      await createUserDoc(user.email, user.displayName);
       return user;
     }
     catch {

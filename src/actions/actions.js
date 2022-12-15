@@ -7,7 +7,7 @@ export function loginUser() {
       dispatch({
         type: LOGIN_USER,
         payload: {
-          userID: user.uid,
+          userID: user.email,
           userName: user.displayName,
         },
       });
