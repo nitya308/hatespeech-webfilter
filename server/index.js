@@ -1,10 +1,9 @@
 const express = require("express");
-const { run } = require("./lib");
 require('dotenv').config()
 
 var admin = require("firebase-admin");
 
-var serviceAccount = require("/permissions.json");
+var serviceAccount = require("./permissions.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
@@ -16,7 +15,6 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 app.use(express.json());
-const https = require('https');
 
 // add route to get the words that need to be replaced for particular user
 app.get("/api/words", (req, res) => {
