@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Hatespeech WebFilter Web App
+**Author:** Nitya Agarwala  
+**Created:** 12 November 2022 <br/>
+**Description:** client and backend server for WebSafe App <br/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the web app for the partner **WebSafe** chrome extension: [here](https://github.com/nitya308/hatespeech-filter-chrome-extn) <br/><br/>
+The internet can be an unsafe place for many with the amount of content out there. While some sites have thier own measures to counteract hate speech, there is no ne solution that makes the entire web safe, custom to the user's needs. <br/> <br/>
+That's where this app comes in. It allows the user to add a custom set of trigger words. These words will then be blurred out on all website the user visits and the user can choose to reveal them if they want. <br/> <br/>
+The app uses **Firebase** to authenticate and store users along with their word preferences. The web app allows users to enter custom words, and toggles showing or hiding a list of the user's banned words. **React** and **Redux** actions are used to update the state and store the user information across the app. The data is sent to the Firebase database using the **Node.js** backend.
 
-## Available Scripts
 
-In the project directory, you can run:
+## Basic Details:
+**Languages & Tools:** JavaScript, React.js, Redux, ExpressJS, NodeJS, Cloud Firestore
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Running this project locally** requires NodeJS and yarn/npm. To install the required packages, run the following command
 
-### `npm test`
+```yarn install```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+OR
 
-### `npm run build`
+```npm install```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Structure:
+Below is the basic structure of the frontend and backend. All calendar functionality is in lib.js in the backend.
+```
+ --src
+    | -- actionTypes
+    |   |-- actionTypes.js
+    | -- actions
+    |   |-- actions.js
+    | -- components
+    |   |-- About.js
+    |   |-- HiddenWords.js
+    |   |-- WordList.js
+    | -- reducers
+    |   |-- userReducer.js
+    | -- App.js
+    | -- App.css
+    | -- index.js
+    | -- index.css
+    | -- firebase.js
+ -- server
+    |-- index.js
+    |-- package-lock.json
+    |-- package.json
+-- package.json
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Future Features
+* Working on python ML models for more accurate and optimized hate speech detection to add to the app. I am taking a Neural Networks class this semester and excited to apply my learnings to this.
