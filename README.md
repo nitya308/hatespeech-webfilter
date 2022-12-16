@@ -47,6 +47,39 @@ Below is the basic structure of the frontend and backend. All calendar functiona
     |-- package-lock.json
     |-- package.json
 -- package.json
+```
+## User Redux Reducer: <br/>
+The UserReducer updates the state of the user throughout the app and for the web extension. The user is intially stored as:
+```
+const initialState = {
+  userID: null,
+  userName: null,
+  words: [],
+};
+```
+The `LOGIN_USER` action calls the Firebase auth function `await signInWithPopup(auth, provider)` to get the uid, access token and email for the user from Google OAuth 2.0 services. A document is then created to store the user information along with the list of words using the firebase `setDoc` function. (see firebase.js for details). <br/><br/>
+
+The `ADD_WORD` action updates the users list of trigger words with an addition to the array by calling the `addWordToUser` function from `firebase.js`. This uses `arrayUnion` method of firestore cloud.
+
+## API Backend Get Words Route: <br/>
+The API is built for the chrome extension to interact with. The main need of the chrome extension is to fetch the user's list of trigger words to hide. This is achieved through the following route:
+```
+app.get("/api/words", (req, res) => {
+  const userID = req.query.userID;
+  (async () => {
+    try {
+      const document = db.collection('users').doc(userID);
+      let userDoc = await document.get();
+      let response = userDoc.data().words;
+      return res.status(200).send(response);
+    } catch (error) {
+      console.log(error);
+      return res.status(500).send(error);
+    }
+  })();
+});
+```
+The route accesses the `users` colelction from the Firestore database and calls the `document.get` function to fetch the words array data.
 
 ## Future Features
 * Working on python ML models for more accurate and optimized hate speech detection to add to the app. I am taking a Neural Networks class this semester and excited to apply my learnings to this.
