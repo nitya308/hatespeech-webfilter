@@ -48,7 +48,7 @@ Below is the basic structure of the frontend and backend. All calendar functiona
     |-- package.json
 -- package.json
 ```
-## User Redux Reducer: <br/>
+## User Reducer Redux: <br/>
 The UserReducer updates the state of the user throughout the app and for the web extension. The user is intially stored as:
 ```
 const initialState = {
